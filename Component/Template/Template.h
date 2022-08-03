@@ -1,0 +1,5 @@
+namespace Component
+{
+    void Introduce();
+}
+
