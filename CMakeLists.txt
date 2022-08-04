@@ -9,6 +9,7 @@ set(PROJECT_LIBRARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Libraries)
 list(APPEND allSubDir "Component")
 list(APPEND allSubDir "Libraries")
 list(APPEND allSubDir "TemplateApp")
+list(APPEND allSubDir "HelloWindow")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
