@@ -1,10 +1,15 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include  <iostream>
+#include "practice1.h"
+#include "practice2.h"
+#include "practice3.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void processInput(GLFWwindow* window);
+
+void course(GLFWwindow* window, unsigned int shaderProgram, unsigned int VAO);
 
 float vertices[] =
 {
@@ -68,26 +73,27 @@ int main()
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // Shader & Program
-    // ---------------------------------------------------------------
-    //Vertex Shader
-    unsigned int vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
 
-    int success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
+	// Shader & Program
+	// ---------------------------------------------------------------
+	//Vertex Shader
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	glCompileShader(vertexShader);
 
-    //Fragment Shader
+	int success;
+	char infoLog[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+	}
+
+	//Fragment Shader
 	unsigned int fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
@@ -98,39 +104,36 @@ int main()
 		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 
-    //Shader Program
-    unsigned int shaderProgram;
-    shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-	
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success)
-    {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-    }
+	//Shader Program
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
 
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+	}
 
 	//Vertex Buffer Object & Vertex Array Object & Element Buffer Object
 	// ----------------------------------------
 	//生成VAO、VBO、EBO
 	unsigned int VAO, VBO, EBO;
 	glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+	glGenBuffers(1, &EBO);
 	glGenVertexArrays(1, &VAO);
 
 	glBindVertexArray(VAO);                         //绑定VAO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);             //绑定VBO
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);     //绑定EBO
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);     //绑定EBO
 
 	//缓冲顶点数据
 	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	//顶点属性指针 数据解析方式
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -138,36 +141,26 @@ int main()
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);             //解绑VBO
 	glBindVertexArray(0);                         //解绑VAO
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);     //解绑EBO
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);     //解绑EBO
 
-    //当目标是GL_ELEMENT_ARRAY_BUFFER的时候，VAO会储存glBindBuffer的函数调用
-    //这也意味着它也会储存解绑调用，所以确保你没有在解绑VAO之前解绑索引数组缓冲，否则它就没有这个EBO配置了。
-    // remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
+	//当目标是GL_ELEMENT_ARRAY_BUFFER的时候，VAO会储存glBindBuffer的函数调用
+	//这也意味着它也会储存解绑调用，所以确保你没有在解绑VAO之前解绑索引数组缓冲，否则它就没有这个EBO配置了。
+	// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
 
-    //线框模式
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//线框模式
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    while (!glfwWindowShouldClose(window))
-    {
-        processInput(window);
+	//course(window, shaderProgram, VAO);
+	//pactice1(window, shaderProgram);
+	//practice2(window, shaderProgram);
+	practice3(window, shaderProgram, vertexShader);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   //设置清空颜色缓冲时所使用的的颜色
-        glClear(GL_COLOR_BUFFER_BIT);           //清空颜色缓冲
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
 
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);                 //绑定VAO [对于这个程序而言, 其实不需要没帧都绑定]
-        //glDrawArrays(GL_TRIANGLES, 0, 3);       //绘制三角形
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);                   //不需要每帧都解绑
-
-        glfwSwapBuffers(window);                //交换颜色缓冲
-        glfwPollEvents();                       //检查触发事件
-    }
-
-
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteProgram(shaderProgram);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProgram);
 
     glfwTerminate();
     return 0;
@@ -182,4 +175,24 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+}
+
+void course(GLFWwindow* window, unsigned int shaderProgram, unsigned int VAO)
+{
+	while (!glfwWindowShouldClose(window))
+	{
+		processInput(window);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   //设置清空颜色缓冲时所使用的的颜色
+		glClear(GL_COLOR_BUFFER_BIT);           //清空颜色缓冲
+
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);                 //绑定VAO [对于这个程序而言, 其实不需要没帧都绑定]
+		//glDrawArrays(GL_TRIANGLES, 0, 3);       //绘制三角形
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);                   //不需要每帧都解绑
+
+		glfwSwapBuffers(window);                //交换颜色缓冲
+		glfwPollEvents();                       //检查触发事件
+	}
 }
