@@ -36,11 +36,11 @@ int main()
     {
         processInput(window);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   //ÉèÖÃÇå¿ÕÑÕÉ«»º³åÊ±ËùÊ¹ÓÃµÄµÄÑÕÉ«
-        glClear(GL_COLOR_BUFFER_BIT);           //Çå¿ÕÑÕÉ«»º³å
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);   //è®¾ç½®æ¸…ç©ºé¢œè‰²ç¼“å†²æ—¶æ‰€ä½¿ç”¨çš„çš„é¢œè‰²
+        glClear(GL_COLOR_BUFFER_BIT);           //æ¸…ç©ºé¢œè‰²ç¼“å†²
 
-        glfwSwapBuffers(window);                //½»»»ÑÕÉ«»º³å
-        glfwPollEvents();                       //¼ì²é´¥·¢ÊÂ¼ş
+        glfwSwapBuffers(window);                //äº¤æ¢é¢œè‰²ç¼“å†²
+        glfwPollEvents();                       //æ£€æŸ¥è§¦å‘äº‹ä»¶
     }
 
     glfwTerminate();

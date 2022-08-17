@@ -10,6 +10,7 @@ list(APPEND allSubDir "Component")
 list(APPEND allSubDir "Libraries")
 list(APPEND allSubDir "TemplateApp")
 list(APPEND allSubDir "HelloWindow")
+list(APPEND allSubDir "HelloTriangle")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
