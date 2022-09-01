@@ -1,9 +1,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include  <iostream>
-#include "practice1.h"
-#include "practice2.h"
-#include "practice3.h"
+#include "Practice1.h"
+#include "Practice2.h"
+#include "Practice3.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
