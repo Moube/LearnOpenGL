@@ -1,2 +1,2 @@
-//empty cpp file for complie
+//empty cpp file for compile
 #include "stb_image.h"
