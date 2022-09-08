@@ -5,7 +5,7 @@ option(GROUP_BY_EXPLORER ON)
 
 file(GLOB_RECURSE HEADER_FILES *.h *.hpp *.ini)
 file(GLOB_RECURSE SOURCE_FILES *.cpp *.c)
-file(GLOB_RECURSE SHADER_FILES *.hlsl)
+file(GLOB_RECURSE SHADER_FILES *.vert *.frag)
 
 set(CppFile ${HEADER_FILES} ${SOURCE_FILES})
 set(AllFile ${CppFile} ${SHADER_FILES})

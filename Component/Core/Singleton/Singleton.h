@@ -1,5 +1,6 @@
+#pragma once
 
-namespace Component
+namespace Core
 {
 	template<class T>
 	class Singleton

@@ -1,8 +1,10 @@
+#pragma once
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Core/Singleton/Singleton.h"
+#include "Singleton/Singleton.h"
 
-namespace Component
+namespace Core
 {
     class Window : public Singleton<Window>
     {
@@ -13,12 +15,15 @@ namespace Component
 
         GLFWwindow* window;
 
+        void processInput();
+
     public:
         static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 
     private:
         Window();
         ~Window();
+        friend class Singleton<Window>;
     };
 }
 

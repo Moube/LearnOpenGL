@@ -187,7 +187,7 @@ void course(GLFWwindow* window, unsigned int shaderProgram, unsigned int VAO)
 		glClear(GL_COLOR_BUFFER_BIT);           //清空颜色缓冲
 
 		glUseProgram(shaderProgram);
-		glBindVertexArray(VAO);                 //绑定VAO [对于这个程序而言, 其实不需要没帧都绑定]
+		glBindVertexArray(VAO);                 //绑定VAO [对于这个程序而言, 其实不需要每帧都绑定]
 		//glDrawArrays(GL_TRIANGLES, 0, 3);       //绘制三角形
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);                   //不需要每帧都解绑

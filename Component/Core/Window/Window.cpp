@@ -1,7 +1,7 @@
 #include "Window.h"
 #include <iostream>
 
-namespace Component
+namespace Core
 {
 
 	bool Window::Init()
@@ -34,6 +34,12 @@ namespace Component
 	GLFWwindow* Window::GetWindow()
 	{
 		return window;
+	}
+
+	void Window::processInput()
+	{
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+			glfwSetWindowShouldClose(window, true);
 	}
 
 	void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
