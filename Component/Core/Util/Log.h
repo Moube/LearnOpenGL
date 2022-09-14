@@ -1,12 +1,12 @@
 #pragma once
 #include <iostream>
-
-#define PRINT(...) printf("\n", __VA_ARGS__);
+#include <initializer_list>
 
 namespace Core
 {
-	class Log
+	template <typename T, typename... Types>
+	void Print(const T& firstArg, const Types&... args)
 	{
-
-	};
+		std::initializer_list <int> { ([&args] {std::cout << args << std::endl; }(), 0)...};
+	}
 }

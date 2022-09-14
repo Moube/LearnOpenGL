@@ -9,14 +9,19 @@
 class Shader
 {
 public:
-	unsigned int ID;
+	explicit Shader(std::string filePath);
 
-	Shader(const char* vertexPath, const char* fragmentPath);
+	Shader(const Shader&) = delete;
+	Shader& operator=(const Shader&) = delete;
 
-	void use();
+	Shader(Shader&& other) noexcept = default;
+	Shader& operator=(Shader&& other) noexcept = default;
 
-	void setBool(const std::string& name, bool value) const;
-	void setInt(const std::string& name, int value) const;
-	void setFloat(const std::string& name, float value) const;
-	void set4Float(const std::string& name, float x, float y, float z, float w) const;
+	~Shader();
+
+	constexpr unsigned int getID() const { return __id;  }
+
+protected:
+	unsigned int __id;
+	std::string source;
 };
