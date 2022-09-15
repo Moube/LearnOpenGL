@@ -12,6 +12,7 @@ list(APPEND allSubDir "TemplateApp")
 list(APPEND allSubDir "HelloWindow")
 list(APPEND allSubDir "HelloTriangle")
 list(APPEND allSubDir "Shaders")
+list(APPEND allSubDir "Textures")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
