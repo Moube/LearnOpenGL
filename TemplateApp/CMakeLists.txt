@@ -37,4 +37,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     glad
     glfw
     stb_image
+    glm
 )

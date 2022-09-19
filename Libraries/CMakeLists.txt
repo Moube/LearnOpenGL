@@ -4,6 +4,7 @@ project(Libraries)
 list(APPEND LibrariesAllSubDir "glad")
 list(APPEND LibrariesAllSubDir "glfw")
 list(APPEND LibrariesAllSubDir "stb_image")
+list(APPEND LibrariesAllSubDir "glm")
 
 foreach(dirname ${LibrariesAllSubDir})
     add_subdirectory(${dirname})
