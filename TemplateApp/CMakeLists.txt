@@ -29,6 +29,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_LIBRARIES_DIR}/glad
     ${PROJECT_LIBRARIES_DIR}/glfw
     ${PROJECT_LIBRARIES_DIR}/stb_image
+    ${PROJECT_LIBRARIES_DIR}/glm
 )
 
 # 链接组件库

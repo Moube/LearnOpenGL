@@ -3,6 +3,7 @@
 #include "FragmentShader.h"
 #include "Util/Log.h"
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 ShaderProgram::ShaderProgram(std::string vertexShader, std::string fragmentShader)
 {
@@ -60,4 +61,9 @@ void ShaderProgram::set2Float(const std::string& name, float x, float y) const
 void ShaderProgram::set4Float(const std::string& name, float x, float y, float z, float w) const
 {
 	glUniform4f(glGetUniformLocation(__id, name.c_str()), x, y, z, w);
+}
+
+void ShaderProgram::setMat4(const std::string& name,const glm::mat4& mat4) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(__id, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat4));
 }

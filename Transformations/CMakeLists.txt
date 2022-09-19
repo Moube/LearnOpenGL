@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
-project(Core)
-option(GROUP_BY_EXPLORER ON)
+project(Transformations)
 option(USE_SOLUTION_FOLDERS ON)
-set(CMAKE_CXX_STANDARD 11)
+option(GROUP_BY_EXPLORER ON)
 
 file(GLOB_RECURSE HEADER_FILES *.h *.hpp *.ini)
 file(GLOB_RECURSE SOURCE_FILES *.cpp *.c)
@@ -19,31 +18,25 @@ foreach(fileItem ${AllFile})
     source_group("${GROUP}" FILES "${fileItem}")
 endforeach()
 
-add_library(${PROJECT_NAME} ${AllFile})
-set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Component")
+# 编译为 可执行文件
+add_executable(${PROJECT_NAME} ${AllFile})
 set_property(SOURCE ${SHADER_FILES} PROPERTY VS_TOOL_OVERRIDE "shader")
-set_property(TARGET ${PROJECT_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 # 头文件目录
-target_include_directories(${PROJECT_NAME} PUBLIC
-    ${PROJECT_COMPONENT_DIR}
-    ${PROJECT_COMPONENT_DIR}/${PROJECT_NAME}
+target_include_directories(${PROJECT_NAME} PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${PROJECT_COMPONENT_DIR}/Core
     ${PROJECT_LIBRARIES_DIR}/glad
     ${PROJECT_LIBRARIES_DIR}/glfw
+    ${PROJECT_LIBRARIES_DIR}/stb_image
     ${PROJECT_LIBRARIES_DIR}/glm
 )
 
-# 链接库
-target_link_libraries(${PROJECT_NAME} PUBLIC 
+# 链接组件库
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    Core
     glad
     glfw
+    stb_image
     glm
 )
-
-# 链接库目录
-#target_link_directories(${PROJECT_NAME} PUBLIC
-    
-#)
-
-
-
