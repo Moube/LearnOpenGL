@@ -14,6 +14,7 @@ list(APPEND allSubDir "HelloTriangle")
 list(APPEND allSubDir "Shaders")
 list(APPEND allSubDir "Textures")
 list(APPEND allSubDir "Transformations")
+list(APPEND allSubDir "CoordinateSystems")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
