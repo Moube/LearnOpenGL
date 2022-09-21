@@ -41,19 +41,19 @@ namespace Core
 		return window;
 	}
 
-	void Window::processInput(float delta)
+	void Window::ProcessInput(float delta)
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, true);
 	}
 
-	void Window::updateSize(int width, int height)
+	void Window::UpdateSize(int width, int height)
 	{
 		__width = width;
 		__height = height;
 	}
 
-	void Window::getSize(int& width, int& height)
+	void Window::GetSize(int& width, int& height)
 	{
 		width = __width;
 		height = __height;
@@ -61,7 +61,7 @@ namespace Core
 
 	void Window::PreProcess(float delta)
 	{
-		processInput(delta);
+		ProcessInput(delta);
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Çå³ýÉî¶È»º´æ
 	}
@@ -75,6 +75,6 @@ namespace Core
 	void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
-		Window::Instance()->updateSize(width, height);
+		Window::Instance()->UpdateSize(width, height);
 	}
 }

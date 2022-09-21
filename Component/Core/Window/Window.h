@@ -13,12 +13,12 @@ namespace Core
 
         GLFWwindow* GetWindow();
         GLFWwindow* window;
-        void processInput(float delta);
+        void ProcessInput(float delta);
 
-        void updateSize(int width, int height);
-        void getSize(int& width, int& height);
-        int getWidth() { return __width; };
-        int getHeight() { return __height; };
+        void UpdateSize(int width, int height);
+        void GetSize(int& width, int& height);
+        int GetWidth() { return __width; };
+        int GetHeight() { return __height; };
 
         void PreProcess(float delta);
         void PostProcess(float delta);
