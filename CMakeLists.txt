@@ -15,6 +15,7 @@ list(APPEND allSubDir "Shaders")
 list(APPEND allSubDir "Textures")
 list(APPEND allSubDir "Transformations")
 list(APPEND allSubDir "CoordinateSystems")
+list(APPEND allSubDir "Camera")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})

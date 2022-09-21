@@ -13,15 +13,15 @@ namespace Core
 
         GLFWwindow* GetWindow();
         GLFWwindow* window;
-        void processInput();
+        void processInput(float delta);
 
         void updateSize(int width, int height);
         void getSize(int& width, int& height);
         int getWidth() { return __width; };
         int getHeight() { return __height; };
 
-        void PreProcess();
-        void PostProcess();
+        void PreProcess(float delta);
+        void PostProcess(float delta);
 
     public:
         static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);

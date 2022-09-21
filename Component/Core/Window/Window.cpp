@@ -30,6 +30,9 @@ namespace Core
 
 		glfwSetFramebufferSizeCallback(window, Window::FramebufferSizeCallback);
 
+		glEnable(GL_DEPTH_TEST);//开启深度测试
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//隐藏并捕获光标
+
 		return true;
 	}
 
@@ -38,7 +41,7 @@ namespace Core
 		return window;
 	}
 
-	void Window::processInput()
+	void Window::processInput(float delta)
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, true);
@@ -56,14 +59,14 @@ namespace Core
 		height = __height;
 	}
 
-	void Window::PreProcess()
+	void Window::PreProcess(float delta)
 	{
-		processInput();
+		processInput(delta);
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //清除深度缓存
 	}
 
-	void Window::PostProcess()
+	void Window::PostProcess(float delta)
 	{
 		glfwSwapBuffers(window);
 		glfwPollEvents();
