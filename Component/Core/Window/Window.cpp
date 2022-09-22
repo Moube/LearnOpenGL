@@ -43,8 +43,7 @@ namespace Core
 
 	void Window::ProcessInput(float delta)
 	{
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			glfwSetWindowShouldClose(window, true);
+		
 	}
 
 	void Window::UpdateSize(int width, int height)
@@ -61,7 +60,6 @@ namespace Core
 
 	void Window::PreProcess(float delta)
 	{
-		ProcessInput(delta);
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Çå³ýÉî¶È»º´æ
 	}

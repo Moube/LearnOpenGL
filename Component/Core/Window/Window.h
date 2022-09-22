@@ -12,7 +12,7 @@ namespace Core
         bool Init();
 
         GLFWwindow* GetWindow();
-        GLFWwindow* window;
+        
         void ProcessInput(float delta);
 
         void UpdateSize(int width, int height);
@@ -23,8 +23,9 @@ namespace Core
         void PreProcess(float delta);
         void PostProcess(float delta);
 
-    public:
         static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
+    private:
+        GLFWwindow* window;
         int __width;
         int __height;
 
