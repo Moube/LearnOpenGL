@@ -1,7 +1,5 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <map>
 #include <memory>
 #include "Singleton/Singleton.h"
