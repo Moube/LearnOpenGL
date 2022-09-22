@@ -57,7 +57,7 @@ namespace Core
 	void Camera::AddPitch(float value)
 	{
 		Pitch += value * MouseSensitivity;
-		Yaw = Math::Clamp(Yaw, -89.0f, 89.0f);
+		Pitch = Math::Clamp(Pitch, -89.0f, 89.0f);
 		NeedUpdateVectors = true;
 	}
 

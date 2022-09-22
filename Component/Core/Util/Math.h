@@ -11,7 +11,7 @@ namespace Core
 		{
 			T temp = _this;
 			temp = _this < _min ? _min : _this;
-			temp = _this > _max ? _max : _this;
+			temp = temp > _max ? _max : temp;
 			return temp;
 		}
 	};
