@@ -35,6 +35,8 @@ namespace Core
     public:
         //获得观察矩阵
         glm::mat4 GetViewMatrix();
+        glm::mat4 GetViewMatrixPractice();
+        static glm::mat4 calculate_lookAt_matrix(glm::vec3 position, glm::vec3 target, glm::vec3 worldUp);
 
         //移动的代码不用它的 自己写
         void Tick(float delta);
@@ -71,7 +73,11 @@ namespace Core
         void UpdateCameraVectors();
         void UpdatePosition(float delta);
         bool NeedUpdateVectors;
-        glm::vec3 MovementDirection;
+        glm::vec3 MoveDirection;
+
+    private:
+        //Chapter Camera练习1.看看你是否能够修改摄像机类，使得其能够变成一个真正的FPS摄像机（也就是说不能够随意飞行）；你只能够呆在xz平面上
+        void UpdatePositionLimitInXZ(float delta);
 
     private:
         Camera(const Camera&) = delete;
