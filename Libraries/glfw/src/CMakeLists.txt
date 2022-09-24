@@ -96,6 +96,9 @@ set_target_properties(glfw PROPERTIES
                       POSITION_INDEPENDENT_CODE ON
                       FOLDER "Libraries")
 
+set_target_properties(glfw PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BUILD_DIR}/Binary)#
+set_target_properties(glfw PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BUILD_DIR}/Binary)#
+
 if (CMAKE_VERSION VERSION_EQUAL "3.1.0" OR
     CMAKE_VERSION VERSION_GREATER "3.1.0")
 

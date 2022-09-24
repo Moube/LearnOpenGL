@@ -21,6 +21,8 @@ endforeach()
 # 编译为 可执行文件
 add_executable(${PROJECT_NAME} ${AllFile})
 set_property(SOURCE ${SHADER_FILES} PROPERTY VS_TOOL_OVERRIDE "shader")
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BUILD_DIR}/Binary)
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BUILD_DIR}/Binary)
 
 # 头文件目录
 target_include_directories(${PROJECT_NAME} PUBLIC 

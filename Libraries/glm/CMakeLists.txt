@@ -69,6 +69,8 @@ add_library(glm_static STATIC ${ROOT_TEXT} ${ROOT_MD} ${ROOT_NAT}
 	target_link_libraries(glm_static PUBLIC glm)
 	add_library(glm::glm_static ALIAS glm_static)
 	set_target_properties(glm_static PROPERTIES FOLDER "Libraries")#
+	set_target_properties(glm_static PROPERTIES LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BUILD_DIR}/Binary)#
+	set_target_properties(glm_static PROPERTIES LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BUILD_DIR}/Binary)#
 endif()
 
 if(BUILD_SHARED_LIBS)
@@ -82,4 +84,6 @@ add_library(glm_shared SHARED ${ROOT_TEXT} ${ROOT_MD} ${ROOT_NAT}
 	target_link_libraries(glm_shared PUBLIC glm)
 	add_library(glm::glm_shared ALIAS glm_shared)
 	set_target_properties(glm_shared PROPERTIES FOLDER "Libraries")#
+	set_target_properties(glm_shared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BUILD_DIR}/Binary)#
+	set_target_properties(glm_shared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BUILD_DIR}/Binary)#
 endif()
