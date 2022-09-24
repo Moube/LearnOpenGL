@@ -43,6 +43,7 @@ namespace Core
 
         //ÒÆ¶¯
         void AddMovement(Movement direction, float value);
+        glm::vec3 GetPosition() { return Position; }
 
         //Ðý×ª
         void AddYaw(float value);

@@ -18,6 +18,8 @@ public:
 	void set2Float(const std::string& name, float x, float y) const;
 	void set3Float(const std::string& name, float x, float y, float z) const;
 	void set4Float(const std::string& name, float x, float y, float z, float w) const;
+
+	void setVec3(const std::string& name, glm::vec3 vec) const;
 	void setMat4(const std::string& name, const glm::mat4& mat4) const;
 
 private:

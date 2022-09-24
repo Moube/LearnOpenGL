@@ -60,7 +60,8 @@ namespace Core
 
 	void Window::PreProcess(float delta)
 	{
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		//glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);//从光照开始使用该背景缓冲
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //清除深度缓存
 	}
 
