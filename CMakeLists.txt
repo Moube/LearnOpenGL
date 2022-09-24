@@ -16,6 +16,7 @@ list(APPEND allSubDir "Textures")
 list(APPEND allSubDir "Transformations")
 list(APPEND allSubDir "CoordinateSystems")
 list(APPEND allSubDir "Camera")
+list(APPEND allSubDir "Colors")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
