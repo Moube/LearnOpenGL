@@ -2,8 +2,8 @@
 #include "Util/Math.h"
 namespace Core
 {
-	Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) :
-		Position(position), WorldUp(up), Yaw(yaw), Pitch(pitch),
+	Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : 
+		SceneObject(position), WorldUp(up), Yaw(yaw), Pitch(pitch),
 		Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
 		MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 	{
@@ -13,7 +13,7 @@ namespace Core
 	}
 
 	Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) :
-		Position(glm::vec3(posX, posY, posZ)), WorldUp(glm::vec3(upX, upY, upZ)), Yaw(yaw), Pitch(pitch),
+		SceneObject(posX, posY, posZ), WorldUp(glm::vec3(upX, upY, upZ)), Yaw(yaw), Pitch(pitch),
 		Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
 		MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 	{
@@ -24,7 +24,7 @@ namespace Core
 
 	glm::mat4 Camera::GetViewMatrix()
 	{
-		glm::mat4 lookAt = glm::lookAt(Position, Position + Front, Up);
+		glm::mat4 lookAt = glm::lookAt(GetPosition(), GetPosition() + Front, Up);
 		return lookAt;
 	}
 
@@ -57,7 +57,7 @@ namespace Core
 
 		glm::mat4 ratoteTranspose = glm::transpose(ratote);
 		viewMatrix = viewMatrix * ratoteTranspose;
-		viewMatrix = glm::translate(viewMatrix, -Position);
+		viewMatrix = glm::translate(viewMatrix, -GetPosition());
 
 		return viewMatrix;
 
@@ -164,7 +164,7 @@ namespace Core
 		float velocity = MovementSpeed * delta;
 		moveVec = moveVec * velocity;
 
-		Position += moveVec;
+		SetPosition(GetPosition() + moveVec);
 
 		MoveDirection = glm::vec3(0.0f);
 	}
@@ -183,7 +183,7 @@ namespace Core
 		float velocity = MovementSpeed * delta;
 		moveVec = glm::normalize(moveVec) * velocity;
 
-		Position += moveVec;
+		SetPosition(GetPosition() + moveVec);
 
 		MoveDirection = glm::vec3(0.0f);
 	}
