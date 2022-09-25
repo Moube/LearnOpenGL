@@ -21,7 +21,7 @@ namespace Core
 		void SetAmbient(glm::vec3 _ambient) { ambient = _ambient; }
 		void SetDiffuse(glm::vec3 _diffuse) { diffuse = _diffuse; }
 		void SetSpecular(glm::vec3 _specular) { specular = _specular; }
-		void SetSpecular(float _shininess) { shininess = _shininess; }
+		void SetShininess(float _shininess) { shininess = _shininess; }
 
 	private:
 		glm::vec3 ambient;
