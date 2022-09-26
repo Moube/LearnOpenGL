@@ -39,10 +39,13 @@ namespace Core
 	public:
 		Texture2D* GetDiffuseMap() { return diffuseMap.get(); }
 		Texture2D* GetSpecularMap() { return specularMap.get(); }
+		Texture2D* GetEmissionMap() { return emissionMap.get(); }
 
+		void CreateEmissionMap(std::string path);
 	private:
 		std::shared_ptr<Texture2D> diffuseMap;
 		std::shared_ptr<Texture2D> specularMap;
+		std::shared_ptr<Texture2D> emissionMap;
 
 	private:
 		Material(const Material&) = delete;

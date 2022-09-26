@@ -20,5 +20,11 @@ namespace Core
 		specular = glm::vec3(0.0f);
 	}
 
+
+	void Material::CreateEmissionMap(std::string path)
+	{
+		emissionMap = std::make_shared<Texture2D>(path);
+	}
+
 }
 
