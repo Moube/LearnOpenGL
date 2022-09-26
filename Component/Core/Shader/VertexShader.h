@@ -1,9 +1,12 @@
 #pragma once
 #include "Shader.h"
 
-class VertexShader : public Shader
+namespace Core
 {
-public:
-	VertexShader(std::string filePath);
+	class VertexShader : public Shader
+	{
+	public:
+		VertexShader(std::string filePath);
 
-};
+	};
+}

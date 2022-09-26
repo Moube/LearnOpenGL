@@ -6,22 +6,25 @@
 #include <sstream>
 #include <iostream>
 
-class Shader
+namespace Core
 {
-public:
-	explicit Shader(std::string filePath);
+	class Shader
+	{
+	public:
+		explicit Shader(std::string filePath);
 
-	Shader(const Shader&) = delete;
-	Shader& operator=(const Shader&) = delete;
+		Shader(const Shader&) = delete;
+		Shader& operator=(const Shader&) = delete;
 
-	Shader(Shader&& other) noexcept = default;
-	Shader& operator=(Shader&& other) noexcept = default;
+		Shader(Shader&& other) noexcept = default;
+		Shader& operator=(Shader&& other) noexcept = default;
 
-	~Shader();
+		~Shader();
 
-	constexpr unsigned int getID() const { return __id;  }
+		constexpr unsigned int getID() const { return __id; }
 
-protected:
-	unsigned int __id;
-	std::string source;
-};
+	protected:
+		unsigned int __id;
+		std::string source;
+	};
+}

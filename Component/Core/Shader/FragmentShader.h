@@ -1,9 +1,12 @@
 #pragma once
 #include "Shader.h"
 
-class FragmentShader : public Shader
+namespace Core
 {
-public:
-	FragmentShader(std::string filePath);
+	class FragmentShader : public Shader
+	{
+	public:
+		FragmentShader(std::string filePath);
 
-};
+	};
+}
