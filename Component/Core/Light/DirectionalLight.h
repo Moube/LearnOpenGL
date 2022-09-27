@@ -18,10 +18,10 @@ namespace Core
         glm::vec3 direction;
        
     private:
-        DirectionalLight(const DirectionalLight&) = delete;
-        DirectionalLight& operator=(const DirectionalLight&) = delete;
-        DirectionalLight(DirectionalLight&& other) noexcept = default;
-        DirectionalLight& operator=(DirectionalLight&& other) noexcept = default;
+        //DirectionalLight(const DirectionalLight&) = delete;
+        //DirectionalLight& operator=(const DirectionalLight&) = delete;
+        //DirectionalLight(DirectionalLight&& other) noexcept = default;
+        //DirectionalLight& operator=(DirectionalLight&& other) noexcept = default;
     };
 }
 

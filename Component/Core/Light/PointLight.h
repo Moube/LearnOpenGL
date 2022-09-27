@@ -11,6 +11,8 @@ namespace Core
             glm::vec3 _ambient = glm::vec3(1.0f),
             glm::vec3 _diffuse = glm::vec3(1.0f),
             glm::vec3 _specular = glm::vec3(1.0f));
+
+        PointLight(glm::vec3 position, Light light);
        
     public:
         float GetConstant() { return constant; }
@@ -25,10 +27,10 @@ namespace Core
 		float quadratic;
 
     private:
-        PointLight(const PointLight&) = delete;
-        PointLight& operator=(const PointLight&) = delete;
-        PointLight(PointLight&& other) noexcept = default;
-        PointLight& operator=(PointLight&& other) noexcept = default;
+        //PointLight(const PointLight&) = delete;
+        //PointLight& operator=(const PointLight&) = delete;
+        //PointLight(PointLight&& other) noexcept = default;
+        //PointLight& operator=(PointLight&& other) noexcept = default;
     };
 }
 

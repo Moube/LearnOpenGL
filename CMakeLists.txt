@@ -22,6 +22,7 @@ list(APPEND allSubDir "BasicLighting")
 list(APPEND allSubDir "Materials")
 list(APPEND allSubDir "LightingMaps")
 list(APPEND allSubDir "LightCasters")
+list(APPEND allSubDir "MultipleLights")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})

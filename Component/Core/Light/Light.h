@@ -25,10 +25,10 @@ namespace Core
         glm::vec3 specular;
         
     private:
-        Light(const Light&) = delete;
-        Light& operator=(const Light&) = delete;
-        Light(Light&& other) noexcept = default;
-        Light& operator=(Light&& other) noexcept = default;
+        //Light(const Light&) = delete;
+        //Light& operator=(const Light&) = delete;
+        //Light(Light&& other) noexcept = default;
+        //Light& operator=(Light&& other) noexcept = default;
     };
 }
 

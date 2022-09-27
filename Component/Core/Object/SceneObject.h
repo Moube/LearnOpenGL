@@ -20,9 +20,9 @@ namespace Core
 		glm::vec3 Position;
 
 	private:
-		SceneObject(const SceneObject&) = delete;
-		SceneObject& operator=(const SceneObject&) = delete;
-		SceneObject(SceneObject&& other) noexcept = default;
-		SceneObject& operator=(SceneObject&& other) noexcept = default;
+		//SceneObject(const SceneObject&) = delete;
+		//SceneObject& operator=(const SceneObject&) = delete;
+		//SceneObject(SceneObject&& other) noexcept = default;
+		//SceneObject& operator=(SceneObject&& other) noexcept = default;
 	};
 }
