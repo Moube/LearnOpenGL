@@ -12,6 +12,9 @@ namespace Core
             glm::vec3 _specular = glm::vec3(1.0f));
 
     public:
+        glm::vec3 GetDirection() { return direction; }
+
+    public:
         glm::vec3 direction;
        
     private:

@@ -12,6 +12,18 @@ namespace Core
             glm::vec3 _diffuse = glm::vec3(1.0f),
             glm::vec3 _specular = glm::vec3(1.0f));
        
+    public:
+        float GetConstant() { return constant; }
+        float GetLinear() { return linear; }
+        float GetQuadratic() { return quadratic; }
+
+        void SetAttenuation(float _constant, float _linear, float _quadratic);
+
+    private:
+		float constant;
+		float linear;
+		float quadratic;
+
     private:
         PointLight(const PointLight&) = delete;
         PointLight& operator=(const PointLight&) = delete;
