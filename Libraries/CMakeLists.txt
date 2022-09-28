@@ -5,6 +5,7 @@ list(APPEND LibrariesAllSubDir "glad")
 list(APPEND LibrariesAllSubDir "glfw")
 list(APPEND LibrariesAllSubDir "stb_image")
 list(APPEND LibrariesAllSubDir "glm")
+list(APPEND LibrariesAllSubDir "assimp")
 
 foreach(dirname ${LibrariesAllSubDir})
     add_subdirectory(${dirname})

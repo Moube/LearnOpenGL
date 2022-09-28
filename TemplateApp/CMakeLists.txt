@@ -32,6 +32,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_LIBRARIES_DIR}/glfw
     ${PROJECT_LIBRARIES_DIR}/stb_image
     ${PROJECT_LIBRARIES_DIR}/glm
+    ${PROJECT_LIBRARIES_DIR}/assimp
 )
 
 # 链接组件库
@@ -41,4 +42,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     glfw
     stb_image
     glm
+    assimp
 )
