@@ -33,6 +33,8 @@ namespace Core
 		glEnable(GL_DEPTH_TEST);//开启深度测试
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//隐藏并捕获光标
 
+		backColor = glm::vec3(0.1f, 0.1f, 0.1f);
+
 		return true;
 	}
 
@@ -61,7 +63,7 @@ namespace Core
 	void Window::PreProcess(float delta)
 	{
 		//glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);//从光照开始使用该背景缓冲
+		glClearColor(backColor.x, backColor.y, backColor.z, 1.0f);//从光照开始使用该背景缓冲
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //清除深度缓存
 	}
 
@@ -69,6 +71,11 @@ namespace Core
 	{
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+	}
+
+	void Window::SetBack(glm::vec3 color)
+	{
+		backColor = color;
 	}
 
 	void Window::FramebufferSizeCallback(GLFWwindow* window, int width, int height)

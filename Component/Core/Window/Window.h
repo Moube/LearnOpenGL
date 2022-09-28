@@ -2,6 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 #include "Singleton/Singleton.h"
 
 namespace Core
@@ -23,11 +24,14 @@ namespace Core
         void PreProcess(float delta);
         void PostProcess(float delta);
 
+        void SetBack(glm::vec3 color);
+
         static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
     private:
         GLFWwindow* window;
         int __width;
         int __height;
+        glm::vec3 backColor;
 
     private:
         Window() {};
