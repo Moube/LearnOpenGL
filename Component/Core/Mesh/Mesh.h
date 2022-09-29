@@ -1,6 +1,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
+#include <assimp/types.h>
 
 namespace Core
 {
@@ -16,6 +17,7 @@ namespace Core
 	{
 		unsigned int id;
 		std::string type;
+		aiString path;
 	};
 	
 	class Mesh
