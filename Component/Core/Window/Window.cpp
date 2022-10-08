@@ -64,7 +64,7 @@ namespace Core
 	{
 		//glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClearColor(backColor.x, backColor.y, backColor.z, 1.0f);//从光照开始使用该背景缓冲
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //清除深度缓存
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); //清除Buffer
 	}
 
 	void Window::PostProcess(float delta)

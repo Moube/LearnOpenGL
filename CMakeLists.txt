@@ -25,6 +25,7 @@ list(APPEND allSubDir "LightCasters")
 list(APPEND allSubDir "MultipleLights")
 list(APPEND allSubDir "Model")
 list(APPEND allSubDir "DepthTesting")
+list(APPEND allSubDir "StencilTesting")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
