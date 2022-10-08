@@ -143,9 +143,6 @@ namespace Core
 		std::string texturePath = directory + "/" + path;
 
 		//直接从Texture2D那复制过来的
-		size_t length = texturePath.length();
-		std::string back4 = texturePath.substr(length - 4, 4);
-		bool rgba = back4 == ".png";
 
 		int width, height, nrChannels;
 		unsigned char* data = stbi_load(texturePath.c_str(), &width, &height, &nrChannels, 0);//路径, 宽度, 高度, 颜色通道数
@@ -160,11 +157,24 @@ namespace Core
 		glGenTextures(1, &id);
 		glBindTexture(GL_TEXTURE_2D, id);//绑定纹理对象
 
+		GLenum format;
+		switch (nrChannels)
+		{
+		case 1:
+			format = GL_RED;
+			break;
+		case 3:
+			format = GL_RGB;
+			break;
+		case 4:
+			format = GL_RGBA;
+			break;
+		default:
+			break;
+		}
+
 		//生成纹理
-		if (rgba)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		else
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 		stbi_image_free(data);//创建完纹理后释放图片资源

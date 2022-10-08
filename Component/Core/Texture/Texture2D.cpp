@@ -3,17 +3,8 @@
 #include "Util/Log.h"
 #include "Asset/Asset.h"
 
-bool isPng(std::string str)
-{
-	size_t length = str.length();
-	std::string back4 = str.substr(length - 4, 4);
-	return back4 == ".png";
-}
-
 Core::Texture2D::Texture2D(std::string path)
 {
-	//这里还得做一下字符串处理, 挺傻逼的
-	bool rgba = isPng(path);
 	std::string sourcePath = Asset::Path(path);
 	int width, height, nrChannels;
 	unsigned char* data = stbi_load(sourcePath.c_str(), &width, &height, &nrChannels, 0);//路径, 宽度, 高度, 颜色通道数
@@ -28,10 +19,23 @@ Core::Texture2D::Texture2D(std::string path)
 	glBindTexture(GL_TEXTURE_2D, getID());//绑定纹理对象
 
 	//生成纹理
-	if (rgba)
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	else
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	GLenum format;
+	switch (nrChannels)
+	{
+	case 1:
+		format = GL_RED;
+		break;
+	case 3:
+		format = GL_RGB;
+		break;
+	case 4:
+		format = GL_RGBA;
+		break;
+	default:
+		break;
+	}
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 	
 	glGenerateMipmap(GL_TEXTURE_2D);
 	stbi_image_free(data);//创建完纹理后释放图片资源
