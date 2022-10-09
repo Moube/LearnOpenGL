@@ -27,6 +27,7 @@ list(APPEND allSubDir "Model")
 list(APPEND allSubDir "DepthTesting")
 list(APPEND allSubDir "StencilTesting")
 list(APPEND allSubDir "Blending")
+list(APPEND allSubDir "FaceCulling")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
