@@ -15,7 +15,7 @@ Core::Texture2D::Texture2D(std::string path)
 	}
 
 	//创建纹理对象
-	glGenTextures(1, &__id);
+	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, getID());//绑定纹理对象
 
 	//生成纹理

@@ -4,7 +4,6 @@
 namespace Core
 {
 	Shader::Shader(std::string filePath)
-		: __id(0)
 	{
 		std::ifstream fs{};
 		fs.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -25,7 +24,7 @@ namespace Core
 
 	Shader::~Shader()
 	{
-		if (__id != 0)
-			glDeleteShader(__id);
+		if (getID() != 0)
+			glDeleteShader(getID());
 	}
 }

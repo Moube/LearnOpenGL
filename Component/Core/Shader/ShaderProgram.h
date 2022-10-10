@@ -2,10 +2,11 @@
 
 #include <string>
 #include <glm/glm.hpp>
+#include "Object/GLObject.h"
 
 namespace Core
 {
-	class ShaderProgram
+	class ShaderProgram : public GLObject
 	{
 	public:
 		ShaderProgram(std::string vertexShader, std::string fragmentShader);
@@ -25,6 +26,5 @@ namespace Core
 		void setMat4(const std::string& name, const glm::mat4& mat4) const;
 
 	private:
-		unsigned int __id;
 	};
 }

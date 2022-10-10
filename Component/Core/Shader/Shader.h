@@ -5,10 +5,11 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "Object/GLObject.h"
 
 namespace Core
 {
-	class Shader
+	class Shader : public GLObject
 	{
 	public:
 		explicit Shader(std::string filePath);
@@ -21,10 +22,7 @@ namespace Core
 
 		~Shader();
 
-		constexpr unsigned int getID() const { return __id; }
-
 	protected:
-		unsigned int __id;
 		std::string source;
 	};
 }
