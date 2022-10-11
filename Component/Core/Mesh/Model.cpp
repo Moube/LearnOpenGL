@@ -15,11 +15,17 @@ namespace Core
 		loadModel(path);
 	}
 
-	void Model::Draw(ShaderProgram program)
+	void Model::Draw(const ShaderProgram& program)
 	{
 		program.use();
 		for (auto iter = meshs.begin(); iter != meshs.end(); iter++)
 			iter->Draw(program);
+	}
+
+	void Model::DrawFaceOnly()
+	{
+		for (auto iter = meshs.begin(); iter != meshs.end(); iter++)
+			iter->DrawFaceOnly();
 	}
 
 	void Model::loadModel(std::string path)
@@ -97,11 +103,17 @@ namespace Core
 		if (mesh->mMaterialIndex >= 0)
 		{
 			aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+			std::vector<Texture> ambientMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_ambient");
+			textures.insert(textures.end(), ambientMaps.begin(), ambientMaps.end());
+
 			std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
 			std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+			//std::vector<Texture> reflectMaps = loadMaterialTextures(material, aiTextureType_REFLECTION, "texture_reflect");
+			//textures.insert(textures.end(), reflectMaps.begin(), reflectMaps.end());
 		}
 
 		return Mesh(vertices, indices, textures);

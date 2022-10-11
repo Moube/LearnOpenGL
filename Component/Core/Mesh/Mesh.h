@@ -28,6 +28,7 @@ namespace Core
 			std::vector<Texture> _textures);
 
 		void Draw(const ShaderProgram& program);
+		void DrawFaceOnly();
 	private:
 		std::vector<Vertex> vertices;
 		std::vector<unsigned int> indices;

@@ -1,18 +1,18 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include <glad/glad.h>
 #include "Object/GLObject.h"
 
 namespace Core
 {
-	class Texture2D : public GLObject
+	class CubeMap : public GLObject
 	{
 	public:
-		Texture2D(std::string path);
-		~Texture2D();
-
+		CubeMap(std::string directory);
+		CubeMap(std::vector<std::string> faces);
+		
 		void activate(int unit);
-		static void flipVertically();
 	};
 }

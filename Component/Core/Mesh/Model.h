@@ -11,7 +11,8 @@ namespace Core
 	public:
 		Model(std::string path);
 
-		void Draw(ShaderProgram program);
+		void Draw(const ShaderProgram& program);
+		void DrawFaceOnly();
 	private:
 		std::vector<Mesh> meshs;
 		std::string directory;

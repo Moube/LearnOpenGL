@@ -16,23 +16,39 @@ namespace Core
 	void Mesh::Draw(const ShaderProgram& program)
 	{
 		//传纹理
+		unsigned int ambientNum = 1;
 		unsigned int diffuseNum = 1;
 		unsigned int specularNum = 1;
+		unsigned int reflectNum = 1;
 		for (unsigned int i = 0; i < textures.size(); i++)
 		{
 			glActiveTexture(GL_TEXTURE0 + i);
 			std::string number;
 			std::string name = textures[i].type;
-			if (name == "texture_diffuse")
+			if (name == "texture_ambient")
+				number = std::to_string(ambientNum++);
+			else if (name == "texture_diffuse")
 				number = std::to_string(diffuseNum++);
-			else
+			else if(name == "texture_specular")
 				number = std::to_string(specularNum++);
+			else if (name == "texture_reflect")
+				number = std::to_string(reflectNum++);
+			else
+				continue;
 
 			program.setInt("material." + name + number, i);
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
 		}
 		glActiveTexture(GL_TEXTURE0);
 
+		//绘制网格
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+	}
+
+	void Mesh::DrawFaceOnly()
+	{
 		//绘制网格
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

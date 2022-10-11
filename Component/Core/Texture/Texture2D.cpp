@@ -48,7 +48,7 @@ Core::Texture2D::~Texture2D()
 
 void Core::Texture2D::activate(int unit)
 {
-	glActiveTexture(unit0 + unit);
+	glActiveTexture(GL_TEXTURE0 + unit);
 	glBindTexture(GL_TEXTURE_2D, getID());
 }
 
