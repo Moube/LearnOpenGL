@@ -30,6 +30,7 @@ list(APPEND allSubDir "Blending")
 list(APPEND allSubDir "FaceCulling")
 list(APPEND allSubDir "Framebuffers")
 list(APPEND allSubDir "Cubemaps")
+list(APPEND allSubDir "AdvancedGLSL")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
