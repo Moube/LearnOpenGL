@@ -31,6 +31,7 @@ list(APPEND allSubDir "FaceCulling")
 list(APPEND allSubDir "Framebuffers")
 list(APPEND allSubDir "Cubemaps")
 list(APPEND allSubDir "AdvancedGLSL")
+list(APPEND allSubDir "GeometryShader")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})

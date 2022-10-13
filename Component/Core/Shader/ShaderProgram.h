@@ -10,6 +10,7 @@ namespace Core
 	{
 	public:
 		ShaderProgram(std::string vertexShader, std::string fragmentShader);
+		ShaderProgram(std::string vertexShader, std::string fragmentShader, std::string geometryShader);
 
 		~ShaderProgram();
 

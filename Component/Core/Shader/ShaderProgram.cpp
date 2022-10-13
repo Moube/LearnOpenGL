@@ -1,6 +1,7 @@
 #include "ShaderProgram.h"
 #include "VertexShader.h"
 #include "FragmentShader.h"
+#include "GeometryShader.h"
 #include "Util/Log.h"
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
@@ -10,11 +11,33 @@ namespace Core
 	ShaderProgram::ShaderProgram(std::string vertexShader, std::string fragmentShader)
 	{
 		VertexShader vertex{ vertexShader };
-		FragmentShader Fragment{ fragmentShader };
+		FragmentShader fragment{ fragmentShader };
 
 		id = glCreateProgram();
 		glAttachShader(getID(), vertex.getID());
-		glAttachShader(getID(), Fragment.getID());
+		glAttachShader(getID(), fragment.getID());
+		glLinkProgram(getID());
+
+		int success;
+		char log[512];
+		glGetProgramiv(getID(), GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(getID(), 512, NULL, log);
+			Core::Print("ERROR::SHADER::PROGRAM::LINKING_FAILED\n", log);
+		}
+	}
+
+	ShaderProgram::ShaderProgram(std::string vertexShader, std::string fragmentShader, std::string geometryShader)
+	{
+		VertexShader vertex{ vertexShader };
+		FragmentShader fragment{ fragmentShader };
+		GeometryShader geometry{ geometryShader };
+
+		id = glCreateProgram();
+		glAttachShader(getID(), vertex.getID());
+		glAttachShader(getID(), fragment.getID());
+		glAttachShader(getID(), geometry.getID());
 		glLinkProgram(getID());
 
 		int success;
