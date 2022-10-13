@@ -93,6 +93,11 @@ namespace Core
 		glUniform4f(glGetUniformLocation(getID(), name.c_str()), x, y, z, w);
 	}
 
+	void ShaderProgram::setVec2(const std::string& name, glm::vec2 vec) const
+	{
+		set2Float(name, vec.x, vec.y);
+	}
+
 	void ShaderProgram::setVec3(const std::string& name, glm::vec3 vec) const
 	{
 		set3Float(name, vec.x, vec.y, vec.z);

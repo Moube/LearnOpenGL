@@ -137,6 +137,14 @@ namespace Core
 		Zoom = Math::Clamp(Zoom, 1.0f, 45.0f);
 	}
 
+	void Camera::SetMovespeed(float speed)
+	{
+		if (speed < 0.0f || speed == MovementSpeed)
+			return;
+
+		MovementSpeed = speed;
+	}
+
 	void Camera::UpdateCameraVectors()
 	{
 		glm::vec3 front;

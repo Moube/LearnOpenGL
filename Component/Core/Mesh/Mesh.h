@@ -29,14 +29,15 @@ namespace Core
 
 		void Draw(const ShaderProgram& program);
 		void DrawFaceOnly();
+
+		unsigned int VAO, VBO, EBO;
+		std::vector<unsigned int> indices;
 	private:
 		std::vector<Vertex> vertices;
-		std::vector<unsigned int> indices;
 		std::vector<Texture> textures;
 
 	private:
-		unsigned int VAO, VBO, EBO;
-
+		
 		void setupMesh();
 	};
 }

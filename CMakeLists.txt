@@ -32,6 +32,7 @@ list(APPEND allSubDir "Framebuffers")
 list(APPEND allSubDir "Cubemaps")
 list(APPEND allSubDir "AdvancedGLSL")
 list(APPEND allSubDir "GeometryShader")
+list(APPEND allSubDir "Instancing")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})

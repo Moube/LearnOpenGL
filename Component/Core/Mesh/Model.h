@@ -13,8 +13,8 @@ namespace Core
 
 		void Draw(const ShaderProgram& program);
 		void DrawFaceOnly();
-	private:
 		std::vector<Mesh> meshs;
+	private:
 		std::string directory;
 		std::vector<Texture> textures_loaded;
 		
