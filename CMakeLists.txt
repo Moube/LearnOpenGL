@@ -34,6 +34,7 @@ list(APPEND allSubDir "AdvancedGLSL")
 list(APPEND allSubDir "GeometryShader")
 list(APPEND allSubDir "Instancing")
 list(APPEND allSubDir "AntiAliasing")
+list(APPEND allSubDir "AdvancedLighting")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
