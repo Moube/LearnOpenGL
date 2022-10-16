@@ -7,9 +7,10 @@ namespace Core
 	bool Window::Init()
 	{
 		glfwInit();
-		glfwWindowHint(GLFW_SAMPLES, 4);//4倍多采样
+		//glfwWindowHint(GLFW_SAMPLES, 4);//4倍多采样
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		__width = 800;
 		__height = 600;
 
