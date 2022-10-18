@@ -36,6 +36,7 @@ list(APPEND allSubDir "Instancing")
 list(APPEND allSubDir "AntiAliasing")
 list(APPEND allSubDir "AdvancedLighting")
 list(APPEND allSubDir "ShadowMapping")
+list(APPEND allSubDir "PointShadows")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
