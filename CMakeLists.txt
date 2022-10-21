@@ -39,6 +39,7 @@ list(APPEND allSubDir "ShadowMapping")
 list(APPEND allSubDir "PointShadows")
 list(APPEND allSubDir "NormalMapping")
 list(APPEND allSubDir "ParallaxMapping")
+list(APPEND allSubDir "HDR")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
