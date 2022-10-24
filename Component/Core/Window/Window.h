@@ -22,7 +22,7 @@ namespace Core
         int GetHeight() { return __height; };
 
         void PreProcess(float delta);
-        void PostProcess(float delta);
+        void SwapBuffer(float delta);
 
         void SetBack(glm::vec3 color);
 

@@ -69,7 +69,7 @@ namespace Core
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); //Çå³ýBuffer
 	}
 
-	void Window::PostProcess(float delta)
+	void Window::SwapBuffer(float delta)
 	{
 		glfwSwapBuffers(window);
 		glfwPollEvents();
