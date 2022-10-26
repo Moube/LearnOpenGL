@@ -42,6 +42,7 @@ list(APPEND allSubDir "ParallaxMapping")
 list(APPEND allSubDir "HDR")
 list(APPEND allSubDir "Bloom")
 list(APPEND allSubDir "DeferredShading")
+list(APPEND allSubDir "SSAO")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})
