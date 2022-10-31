@@ -44,6 +44,7 @@ list(APPEND allSubDir "Bloom")
 list(APPEND allSubDir "DeferredShading")
 list(APPEND allSubDir "SSAO")
 list(APPEND allSubDir "PBRLighting")
+list(APPEND allSubDir "DiffuseIrraidance")
 
 foreach(dirname ${allSubDir})
     add_subdirectory(${dirname})

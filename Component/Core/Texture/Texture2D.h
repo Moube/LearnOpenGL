@@ -12,7 +12,13 @@ namespace Core
 		Texture2D(std::string path);
 		~Texture2D();
 
+		void loadNormal();
+		void loadHDR();
+
 		void activate(int unit);
 		static void flipVertically();
+	private:
+		std::string getExtension(std::string s);
+		std::string sourcePath;
 	};
 }
