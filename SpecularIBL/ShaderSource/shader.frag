@@ -15,6 +15,7 @@ uniform vec3 lightPositions[4];
 uniform vec3 lightColors[4];
 uniform samplerCube irradianceMap;
 uniform samplerCube prefilterMap;
+uniform sampler2D brdfLUT;
 
 float DistributionGGX(vec3 N, vec3 H, float _roughness);
 float GeometrySchlickGGX(float NdotV, float _roughness);
@@ -31,6 +32,9 @@ void main()
     F0 = mix(F0, albedo, metallic);
 
     float NdotV = max(dot(N, V), 0.0);
+
+    //---------------
+ 
 
     //---------------
     vec3 Lo = vec3(0.0);
@@ -72,12 +76,23 @@ void main()
     //ambient
     //vec3 ambient = vec3(0.03) * albedo * ao;
 
-    //基于采样环境光入射辐射来计算ambient
-    vec3 kS = fresnelSchlickRoughness(NdotV, F0, roughness);//在fresnel-schlick中加入粗糙度
+    //IBL ambient
+    vec3 F = fresnelSchlickRoughness(NdotV, F0, roughness);//在fresnel-schlick中加入粗糙度
+    vec3 kS = F;
     vec3 kD = 1.0 - kS;
-    vec3 irradiance = texture(irradianceMap, N).rgb;
+
+    //漫反射IBL
+    vec3 irradiance = texture(irradianceMap, N).rgb;//使用N对漫反射辐照进行采样
     vec3 diffuse = irradiance * albedo;
-    vec3 ambient = (kD * diffuse) * ao;
+
+    //镜面反射IBL
+    vec3 R = reflect(-V, N);//使用反射向量对间接镜面反射进行采样
+    const float MAX_REFLECTION_LOD = 4.0;
+    vec3 prefilteredColor = textureLod(prefilterMap, R, roughness * MAX_REFLECTION_LOD).rgb;//mip采样级别与粗糙度有关
+    vec2 envBRDF = texture(brdfLUT, vec2(NdotV), roughness).rg;//使用ndotv与roughness对brdfLUT进行采样
+    vec3 specular = prefilteredColor * (F * envBRDF.x + envBRDF.y);
+
+    vec3 ambient = (kD * diffuse + specular) * ao;//此处specular没有乘ks因为上面已经乘过F了
     vec3 color = ambient + Lo;
 
     //gamma
