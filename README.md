@@ -1,6 +1,7 @@
 # LearnOpenGL
 > 个人学习OpenGL的记录
 
+> [视频演示](https://www.bilibili.com/video/BV1U84y1e7ns)
 ---
 ## 构筑流程
 ### Window
