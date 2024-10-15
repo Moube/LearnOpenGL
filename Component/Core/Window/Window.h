@@ -10,7 +10,7 @@ namespace Core
     class Window : public Singleton<Window>
     {
     public:
-        bool Init();
+        bool Init(int width=1280, int height=720);
 
         GLFWwindow* GetWindow();
         

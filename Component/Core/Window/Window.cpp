@@ -4,15 +4,15 @@
 namespace Core
 {
 
-	bool Window::Init()
+	bool Window::Init(int width, int height)
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_SAMPLES, 4);//4±¶¶à²ÉÑù
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		__width = 1280;
-		__height = 720;
+		__width = width;
+		__height = height;
 
 		window = glfwCreateWindow(__width, __height, "LearnOpenGL", NULL, NULL);
 		if (window == NULL)
