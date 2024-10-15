@@ -7,6 +7,7 @@
 #include <map>
 
 #include "Singleton/Singleton.h"
+#include "Shader/ShaderProgram.h"
 
 namespace Core
 {
@@ -22,13 +23,15 @@ namespace Core
     public:
         void Init();
 
-        Character getCharacter(GLchar c);
+        void RenderText(std::wstring text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color, std::string font);
 
     private:
-        std::map<GLchar, Character> CharacterMap;
+        unsigned int VAO;
+        unsigned int VBO;
+        ShaderProgram* program;
 
     private:
-        TextManager() {};
+        TextManager();
         ~TextManager() {};
         TextManager(const TextManager&) = delete;
         TextManager& operator=(const TextManager&) = delete;
