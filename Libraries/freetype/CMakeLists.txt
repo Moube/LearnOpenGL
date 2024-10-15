@@ -86,8 +86,9 @@
 # to hide all other symbols. CMake supports a C_VISBILITY_PRESET property
 # starting with 2.8.12.
 
+#行位带 "#"的语句是自己增添或者修改过的
 # 源项目要求是2.8.12但为了GROUP_BY_EXPLORER与USE_SOLUTION_FOLDERS, 我这里限制3.8以上
-cmake_minimum_required(VERSION 3.8) 
+cmake_minimum_required(VERSION 3.8)#
 
 if (NOT CMAKE_VERSION VERSION_LESS 3.3)
   # Allow symbol visibility settings also on static libraries. CMake < 3.3
@@ -134,6 +135,8 @@ endif ()
 
 
 project(freetype C)
+option(GROUP_BY_EXPLORER ON)#
+option(USE_SOLUTION_FOLDERS ON)#
 
 set(VERSION_MAJOR "2")
 set(VERSION_MINOR "10")
@@ -344,6 +347,12 @@ add_library(freetype
   ${PRIVATE_HEADERS}
   ${BASE_SRCS}
 )
+
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)#
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Libraries")#
+set_property(TARGET ${PROJECT_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")#
+set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BUILD_DIR}/Binary)#
+set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BUILD_DIR}/Binary)#
 
 set_target_properties(
   freetype PROPERTIES

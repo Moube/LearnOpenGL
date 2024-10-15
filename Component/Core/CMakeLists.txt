@@ -35,6 +35,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_LIBRARIES_DIR}/glm
     ${PROJECT_LIBRARIES_DIR}/stb_image
     ${PROJECT_LIBRARIES_DIR}/assimp
+    ${PROJECT_LIBRARIES_DIR}/freetype
 )
 
 # 链接库
@@ -44,6 +45,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     glm
     stb_image
     assimp
+    freetype
 )
 
 # 链接库目录
